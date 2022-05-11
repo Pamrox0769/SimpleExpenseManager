@@ -18,14 +18,12 @@ package lk.ac.mrt.cse.dbs.simpleexpensemanager;
 
 import android.content.Context;
 
-
+import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import androidx.test.core.app.ApplicationProvider;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.PersistenceExpenseManager;
@@ -36,22 +34,23 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.ExpenseType;
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-public class ApplicationTest {
+public class ApplicationTest{
     private static ExpenseManager expenseManager;
+
     @BeforeClass
-    public void createExpManager(){
+    public static void createExpenseManager(){
         Context context = ApplicationProvider.getApplicationContext();
         try {
-            expenseManager=new PersistenceExpenseManager(context);
-
+            expenseManager = new PersistenceExpenseManager(context);
         } catch (ExpenseManagerException e) {
             e.printStackTrace();
         }
     }
+
     @Test
     public void addAccountTest (){
-        expenseManager.addAccount("PAMUDU123","boc","pamuduW",100000.0);
-        assertTrue(expenseManager.getAccountNumbersList().contains("PAMUDU123"));
+        expenseManager.addAccount("WIj0769","Commercial","Pamudu",20000.0);
+        assertTrue(expenseManager.getAccountNumbersList().contains("WIj0769"));
     }
 
     @Test
